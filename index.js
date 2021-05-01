@@ -16,30 +16,27 @@
 //     return sourceArray.map(x => x*x)
 // }
 
-function map(sourceArray) {
-return sourceArray.map(x => x * -1);
+function map(src, cb) {
+  let r = []
+
+  for (let i = 0; i < src.length; i++) {
+    let theElement = src[i]
+    r.push(cb(theElement))
+  }
+
+  return r;
 }
 
-let two = function(sourceArray) {
+function reduce(src, cb, starting){
+  let r = (!!starting) ? starting : src[0]
+  let i = (!!starting) ? 0 : 1
 
-  function map(sourceArray){
-      return sourceArray.map(x => x)
+  for (; i < src.length; i++) {
+    r = cb(src[i], r)
+  }
+
+  return r;
 }
-let three= function(sourceArray) {
-function map(sourceArray){
-    return sourceArray.map(x => x*2)
-}
-
-functionUsingCallback(map, two, three , function(sourceArray){
-  return sourceArray.map(x => x*x)
-});
-
-function functionUsingCallback(eins, zwei, drei, sourceArray){
-  eins()
-  zwei()
-  drei()
-}
-
 
 
 
